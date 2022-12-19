@@ -1,8 +1,7 @@
 package model1.mylibrary.book;
 
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import common.DBConnPool;
 
@@ -11,8 +10,8 @@ public class BookDAO  extends DBConnPool{
 	public BookDAO() {
 		super();
 	}
-	public List<BookDTO> selectList() {
-		List<BookDTO> board = new Vector<BookDTO>();
+	public ArrayList<BookDTO> selectList() {
+		ArrayList<BookDTO> board = new ArrayList<BookDTO>();
 
 		String query = " select book_title, book_author  from book ";
 		
