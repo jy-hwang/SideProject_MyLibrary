@@ -19,7 +19,7 @@
 BookDAO dao = new BookDAO();
 List<BookDTO> dto = dao.selectList();
 for(BookDTO d : dto){
-System.out.printf("%-20s\t %-10s\n",d.getTitle(), d.getAuthor());
+System.out.printf("%-20s\t %-10s\n",d.getBookTitle(), d.getBookAuthor());
 }
 
 dao.close();
