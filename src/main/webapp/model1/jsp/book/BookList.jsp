@@ -13,11 +13,11 @@
     
     Map<String, Object> param = new HashMap<String,Object>();
     
-    String searchField = request.getParameter("searchField2");
+    String searchField2 = request.getParameter("searchField2");
     String searchWord = request.getParameter("searchWord");
     
     if(searchWord != null){
-    	param.put("searchField2", searchField);
+    	param.put("searchField2", searchField2);
     	param.put("searchWord", searchWord);
     }
 
@@ -26,7 +26,7 @@
   int totalCount = dao.selectCount(param);
     
     /**페이징 코드 추가부분 s *******************************/
-    
+    //POSTS_PER_PAGE
     int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
     int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
     int totalPage = (int)Math.ceil((double)totalCount / pageSize);
@@ -38,8 +38,8 @@
     	pageNum = Integer.parseInt(pageTemp);
     }
     
-    int start = (pageNum -1 ) * pageSize + 1;
-    int end = pageNum * pageSize;
+    int start = (pageNum -1 ) * pageSize;
+    int end = pageSize;
     System.out.println("페이징 관련 변수 : " + " " + pageSize + " "+blockPage + " "+ totalPage + " " +start +" " + end);
     param.put("start",start);
     param.put("end",end);

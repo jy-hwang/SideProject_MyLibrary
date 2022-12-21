@@ -45,6 +45,14 @@ public class BookDAO  extends DBConnPool{
 			//stmt = con.createStatement();
 			rs = psmt.executeQuery();
 
+/*			try {
+		         stmt = con.createStatement();
+		         rs = stmt.executeQuery(query);
+		         rs.next();
+		         totalCount = rs.getInt(1);
+		      }
+	*/		
+			
 			while (rs.next()) {
 				BookDTO dto = new BookDTO();
 
@@ -73,21 +81,30 @@ public class BookDAO  extends DBConnPool{
 		ArrayList<BookDTO> bbs = new ArrayList<BookDTO>();
 		
 		//String query1 = "select * from ( select tb.* , rownum rNum from ( select * from board ";
-		String query = "SELECT * FROM ( SELECT tb.*, rownum rNum FROM ( SELECT BOOK_CODE, BOOK_TITLE,BOOK_AUTHOR,BOOK_GENRE,BOOK_STATUS,c.CMMN_NAME  AS book_status_nm ,PUBLISHER,PUBLISH_DATE  FROM book b   INNER JOIN cmmn C   ON b.BOOK_STATUS = c.CMMN_CODE ";
+		String query = " SELECT BOOK_CODE, BOOK_TITLE,BOOK_AUTHOR,BOOK_GENRE,BOOK_STATUS,c.CMMN_NAME  AS book_status_nm ,PUBLISHER,PUBLISH_DATE  FROM book b   INNER JOIN cmmn C   ON b.BOOK_STATUS = c.CMMN_CODE ";
 		if (map.get("searchWord") != null) {
-			query += "WHERE " + map.get("searchField") + " like '%" + map.get("searchWord") + "%'";
+			query += "WHERE " + map.get("searchField2") + " like '%" + map.get("searchWord") + "%'";
 		}
 
-		query += " ORDER BY publish_date DESC ) tb ) WHERE rNum BETWEEN ? AND ? ";
+		query += " ORDER BY publish_date DESC limit ? , ? ";
 
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, map.get("start").toString());
-			psmt.setString(2, map.get("end").toString());
+			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 			System.out.println(query + " " + map.get("start").toString() + " " + map.get("end").toString());
 			// stmt = con.createStatement();
+			//rs = stmt.
 			rs = psmt.executeQuery();
 
+			/*
+			stmt = con.createStatement();
+	         rs = stmt.executeQuery(query);
+	         rs.next();
+	         totalCount = rs.getInt(1);
+			*/
+			
+			
 			while (rs.next()) {
 				BookDTO dto = new BookDTO();
 
