@@ -42,17 +42,8 @@ public class BookDAO  extends DBConnPool{
 		
 		try {
 			psmt = con.prepareStatement(query);
-			//stmt = con.createStatement();
 			rs = psmt.executeQuery();
 
-/*			try {
-		         stmt = con.createStatement();
-		         rs = stmt.executeQuery(query);
-		         rs.next();
-		         totalCount = rs.getInt(1);
-		      }
-	*/		
-			
 			while (rs.next()) {
 				BookDTO dto = new BookDTO();
 
@@ -82,10 +73,13 @@ public class BookDAO  extends DBConnPool{
 		
 		//String query1 = "select * from ( select tb.* , rownum rNum from ( select * from board ";
 		String query = " SELECT BOOK_CODE, BOOK_TITLE,BOOK_AUTHOR,BOOK_GENRE,BOOK_STATUS,c.CMMN_NAME  AS book_status_nm ,PUBLISHER,PUBLISH_DATE  FROM book b   INNER JOIN cmmn C   ON b.BOOK_STATUS = c.CMMN_CODE ";
-		if (map.get("searchWord") != null) {
-			query += "WHERE " + map.get("searchField2") + " like '%" + map.get("searchWord") + "%'";
+		if (map.get("searchWord1") != null && map.get("searchWord1") != "") {
+			query += "WHERE " + map.get("searchField1") + " like '%" + map.get("searchWord1") + "%'";
 		}
-
+		if (map.get("searchWord2") != null && map.get("searchWord2") != ""){
+			query += "WHERE " + map.get("searchField2") + " >= '" + map.get("searchWord2") + "'";
+		}
+		
 		query += " ORDER BY publish_date DESC limit ? , ? ";
 
 		try {
@@ -93,17 +87,7 @@ public class BookDAO  extends DBConnPool{
 			psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
 			psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 			System.out.println(query + " " + map.get("start").toString() + " " + map.get("end").toString());
-			// stmt = con.createStatement();
-			//rs = stmt.
 			rs = psmt.executeQuery();
-
-			/*
-			stmt = con.createStatement();
-	         rs = stmt.executeQuery(query);
-	         rs.next();
-	         totalCount = rs.getInt(1);
-			*/
-			
 			
 			while (rs.next()) {
 				BookDTO dto = new BookDTO();
@@ -133,7 +117,3 @@ public class BookDAO  extends DBConnPool{
 	}
 
 }
-//
-//String query = "select book_title, book_author from ( select tb.* , rownum rNum from ( select * from book ";
-//
-//query += " order by book_code desc ) tb ) where rNum between 1 and 100 ";
