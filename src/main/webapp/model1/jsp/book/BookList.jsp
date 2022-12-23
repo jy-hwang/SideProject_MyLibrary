@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../member/IsLoggedIn.jsp"%>  
 <%
 BookDAO dao = new BookDAO();
 
@@ -66,7 +67,12 @@ dao.close();
 <title>Insert title here</title>
 <script>
 	function borrow() {
-		alert("대여하기");
+var books =[];
+		  $("input[type='checkbox']:checked").each(function (idx) {
+              books.push(this.value);
+          });
+		  console.log("books  : " , books);
+		//alert("대여하기");
 		//console.log()
 
 	}
@@ -86,7 +92,7 @@ dao.close();
 						<option value="book_title" <%= searchField1 != null && searchField1.equals("book_title") ? "selected" : "" %>>제목</option>
 						<option value="book_author" <%= searchField1 != null && searchField1.equals("book_author") ? "selected" : "" %>>저자</option>
 						<option value="publisher" <%= searchField1 != null && searchField1.equals("publisher") ? "selected" : "" %>>출판사</option>
-				</select> <input type="text" name="searchWord1" value= <%= searchWord1 != null && searchWord1.equals("") ? "" : searchWord1 %> />
+				</select> <input type="text" name="searchWord1" value= <%= searchWord1 != null && searchWord1 !="" ? searchWord1 : "" %>>
 				<input type="submit" class="btn btn-warning" value="검색하기" /></td>
 			</tr>
 			<tr>
@@ -100,6 +106,7 @@ dao.close();
 		</table>
 	</form>
 	<table class="table table-striped" border="1" width="90%">
+	<thead class="text-center">
 		<tr>
 			<th>선택</th>
 			<th>번호</th>
@@ -109,6 +116,8 @@ dao.close();
 			<th>발행일</th>
 			<th>대여상태</th>
 		</tr>
+		</thead>
+		<tbody class="text-center">
 		<%
 		if (bookList.isEmpty()) {
 		%>
@@ -124,8 +133,16 @@ dao.close();
 			virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
 		%>
 		<tr>
-			<td><input type="checkbox" name="book"
-				value="<%=dto.getBookCode()%>" /></td>
+			<td>
+			<%
+			//System.out.println(dto.getBookStatus());
+			if(dto.getBookStatus().equalsIgnoreCase("BK101")){
+			%>
+			<input type="checkbox" name="bookChk" value="<%=dto.getBookCode()%>" />
+			<%
+			}
+			%>
+			</td>
 			<td><%=virtualNum%></td>
 			<%--  
             <td align="left"> 
@@ -133,17 +150,18 @@ dao.close();
             </td>
             --%>
 			<td style="display: none;"><%=dto.getBookCode()%></td>
-			<td align="center"><%=dto.getBookTitle()%></td>
-			<td align="center"><%=dto.getBookAuthor()%></td>
-			<td align="center"><%=dto.getPublisher()%></td>
-			<td align="center"><%=dto.getPublishDate()%></td>
+			<td><%=dto.getBookTitle()%></td>
+			<td><%=dto.getBookAuthor()%></td>
+			<td><%=dto.getPublisher()%></td>
+			<td><%=dto.getPublishDate()%></td>
 			<td style="display: none;"><%=dto.getBookStatus()%></td>
-			<td align="center"><%=dto.getBookStatusNm()%></td>
+			<td><%=dto.getBookStatusNm()%></td>
 		</tr>
 		<%
 		}
 		}
 		%>
+		</tbody>
 	</table>
 
 	<table class="table" width="90%">

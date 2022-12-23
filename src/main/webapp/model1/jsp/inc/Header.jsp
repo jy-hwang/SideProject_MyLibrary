@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ include file="../member/IsLoggedIn.jsp"%>
+<%
+	
+	String uNm = (String)session.getAttribute("UserName");
+	String uTp = (String)session.getAttribute("UserType");
+%>
 
 <style>
 @import	url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
@@ -18,7 +23,9 @@ a {
 	text-decoration: none;
 	color: #404040;
 }
-
+ul{
+padding : 0;
+}
 li {
 	list-style: none;
 }
@@ -28,7 +35,7 @@ li {
 	height: 50px;
 }
 
-#header ul {
+#header .header_ul_main {
 	width: 800px;
 	margin: 0 auto;
 	/*overflow: hidden;*/
@@ -72,12 +79,19 @@ li {
 
 <div id="header">
 	<ul class="header_ul_main">
+	<%
+	if(uTp.equalsIgnoreCase("stu")){
+	%>
 		<li><a href="#">학생정보</a>
 			<ul class="ul_sub">
 				<li><a href="../student/StudentInfo.jsp">학생정보</a></li>
 				<li><a href="../seat/Seat.jsp">좌석선택</a></li>
 			</ul></li>
+		<%}else if(uTp.equalsIgnoreCase("stf")){ %>
 		<li><a href="#">직원정보</a></li>
+		<%}else if(uTp.equalsIgnoreCase("pub")){ %>
+		<li><a href="#">개인정보</a></li>
+		<%} %>
 		<li><a href="#">도서</a>
 			<ul class="ul_sub">
 				<li><a href="../book/BookList.jsp">도서목록</a></li>
@@ -91,6 +105,6 @@ li {
 				<li><a href="../board/BoardList.jsp?b_id=30">QnA</a></li>
 				<li><a href="../board/BoardList.jsp?b_id=40">희망도서신청</a></li>
 			</ul></li>
-		<li><a href="../student/Logout.jsp">로그아웃</a></li>
+		<li><a href="../member/Logout.jsp">로그아웃</a></li>
 	</ul>
 </div>

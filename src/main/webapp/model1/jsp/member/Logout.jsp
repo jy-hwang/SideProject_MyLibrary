@@ -3,9 +3,9 @@
 <%
 	session.removeAttribute("UserId");
 	session.removeAttribute("UserName");
-	
+	session.removeAttribute("UserType");
 	session.invalidate();
 	
-	response.sendRedirect("Login.jsp");
+	response.sendRedirect("../member/Login.jsp");
 
 %>
