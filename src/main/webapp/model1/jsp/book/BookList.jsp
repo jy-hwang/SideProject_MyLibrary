@@ -65,17 +65,42 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
+<script type="text/javascript">
+
 	function borrow() {
-var books =[];
+		var books =[];
+		var count = 0;
 		  $("input[type='checkbox']:checked").each(function (idx) {
               books.push(this.value);
+              count++;
           });
 		  console.log("books  : " , books);
 		//alert("대여하기");
 		//console.log()
+		if(count == 0){
+			alert('한 권 이상 선택하세요');
+			return;
+		}
+		
+		if(count > 5){
+			alert('한번에 다섯권이하로 선택하세요');
+			return;
+		}
+		
+		//var chk = prompt
+		
+		var form = document.getElementById("bookListForm");
+		
+		form.submit();
 
 	}
+	
+	function addBook(){
+		
+		location.href("../book/BookAdd.jsp");
+		
+	}
+	
 </script>
 </head>
 <body>
@@ -100,11 +125,12 @@ var books =[];
 				<select name="searchField2">
 						<option value="publish_date" >발행일</option>
 				</select>
-				<input type="date" name="searchWord2" value= <%= searchWord2 != null && searchWord2.equals("") ? "" : searchWord2 %>/>
+				<input type="date" name="searchWord2" value= <%= searchWord2 != null && searchWord2.equals("") ? "" : searchWord2 %> />
 				<input type="submit" class="btn btn-danger" value="검색하기" /></td>
 			</tr>
 		</table>
 	</form>
+	<form id="bookListForm" method="post" action="BorrowProcess.jsp">
 	<table class="table table-striped" border="1" width="90%">
 	<thead class="text-center">
 		<tr>
@@ -163,12 +189,34 @@ var books =[];
 		%>
 		</tbody>
 	</table>
-
+</form>
 	<table class="table" width="90%">
 		<tr align="right">
 			<!-- 글쓰기 버튼-->
+			
+					<%
+			//System.out.println(dto.getBookStatus());
+					if("stf".equalsIgnoreCase(session.getAttribute("UserType").toString())){
+						
+					
+			%>
 			<td><button type="button" class="btn btn-info"
-					onclick="borrow();">대여하기</button></td>
+					onclick="borrow()">대여하기</button>
+					<button type="button" class="btn btn-info"
+					onclick="location.href='../book/BookAdd.jsp';">책추가</button></td>
+			<%
+					}else{
+						
+					
+			%>
+			<td><button type="button" class="btn btn-info"
+					onclick="borrow()">대여하기</button></td>
+			
+			
+			<%
+			
+					}
+			%>
 		</tr>
 		<tr align="center">
 			<!-- 페이징 처리 -->

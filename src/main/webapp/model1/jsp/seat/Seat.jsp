@@ -23,7 +23,14 @@
 </style>
 <script>
 function alertFunc(elem){
-	alert(elem.innerText);
+	var str = "SEAT"
+	alert(str.concat(lpad(elem.innerText,4,0)));
+}
+function lpad(val, padLength, padString){
+    while(val.length < padLength){
+        val = padString + val;
+    }
+    return val;
 }
 </script>
 </head>
@@ -45,7 +52,7 @@ function alertFunc(elem){
 		for(int i=1 ; i<=trCnt ; i++){			 
 		%>
 			<tr>
-				<td onclick=alertFunc(this);><%=strArr[leftTd]%></td>
+				<td onclick='alertFunc(this);'><%=strArr[leftTd]%></td>
 				<td onclick=alertFunc(this);><%=strArr[++leftTd]%></td>
 				<td class="border0"></td>
 				<td onclick=alertFunc(this);><%=strArr[rightTd]%></td>

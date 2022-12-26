@@ -116,4 +116,30 @@ public class BookDAO  extends DBConnPool{
 		
 	}
 
+	public int borrowReturnBook(Map<String, Object> map) {
+		int result = 0 ;
+		
+		String query = " update book set book_status = ? , updt_user = ? ,updt_date = now() where book_code = ?";
+		
+		try {
+
+			psmt = con.prepareStatement(query);
+			// 인파라미터 설정
+				psmt.setString(1, map.get("bookStatus").toString());
+				psmt.setString(2, map.get("memberNo").toString());
+				psmt.setString(3, map.get("bookCode").toString());
+				
+				result += psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+		
+		
+		
+	}
+	
+	
 }
