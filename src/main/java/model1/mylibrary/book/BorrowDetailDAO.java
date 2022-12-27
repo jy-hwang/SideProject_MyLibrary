@@ -36,7 +36,7 @@ public class BorrowDetailDAO extends DBConnPool {
 		return totalCount;
 	}
 
-	public ArrayList<BorrowDetailDTO> selectList(Map<String, Object> map) {
+	public ArrayList<BorrowDetailDTO> selectList(String mNo) {
 		ArrayList<BorrowDetailDTO> board = new ArrayList<BorrowDetailDTO>();
 
 		String query = " SELECT bbd.MEMBER_NO, bbd.BORROW_START_TIME,bbd.BORROW_END_TIME,b.book_code,b.BOOK_TITLE,b.BOOK_AUTHOR,bbd.BOOK_STATUS,b.BOOK_GENRE,cmmn1.CMMN_NAME AS 'book_status_nm', cmmn2.CMMN_NAME AS 'book_genre_nm',b.publisher FROM book_borrow_DETAIL bbd INNER JOIN book b ON bbd.BOOK_CODE  = b.BOOK_CODE   INNER JOIN CMMN cmmn1    ON bbd.borrow_status = cmmn1.CMMN_CODE    INNER JOIN CMMN cmmn2    ON b.book_genre = cmmn2.CMMN_CODE ";
@@ -44,7 +44,7 @@ public class BorrowDetailDAO extends DBConnPool {
 		query += "   WHERE bbd.MEMBER_NO = ?";
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, map.get("memberNo").toString());
+			psmt.setString(1, mNo);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

@@ -86,6 +86,7 @@ li {
 			<ul class="ul_sub">
 				<li><a href="../student/StudentInfo.jsp">학생정보</a></li>
 				<li><a href="../seat/Seat.jsp">좌석선택</a></li>
+				<li><a href="../seat/SeatUseDetail.jsp">좌석이용내역</a></li>
 			</ul></li>
 		<%}else if(uTp.equalsIgnoreCase("stf")){ %>
 		<li><a href="#">직원정보</a></li>
