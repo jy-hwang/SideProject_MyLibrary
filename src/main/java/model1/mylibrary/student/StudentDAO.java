@@ -34,10 +34,10 @@ public class StudentDAO extends DBConnPool {
 		return isDup;
 	}
 
-	public ArrayList<StudentDTO> selectListOne(String stuNo){
+	public ArrayList<StudentDTO> selectListOne(String stuNo) {
 		ArrayList<StudentDTO> listOne = new ArrayList<StudentDTO>();
 		StudentDTO dto = new StudentDTO();
-		
+
 		String query = "select stu_no from student where stu_no = ?";
 
 		try {
@@ -46,21 +46,17 @@ public class StudentDAO extends DBConnPool {
 			rs = psmt.executeQuery();
 			System.out.println("쿼리 , 학번 : " + query + stuNo);
 			if (rs.next()) {
-				
-				//dto.set
-				
+
+				// dto.set
+
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		return listOne;
-		
-		
-		
+
 	}
-	
+
 }

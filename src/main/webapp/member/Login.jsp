@@ -32,10 +32,7 @@ function formValidate() {
 
 }
 
-
-
 </script>
-
 
 </head>
 

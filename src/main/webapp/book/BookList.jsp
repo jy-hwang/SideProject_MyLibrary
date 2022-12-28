@@ -53,7 +53,7 @@ mapPaging.put("pageSize", pageSize);
 mapPaging.put("blockPage", blockPage);
 mapPaging.put("pageNum", pageNum);
 mapPaging.put("reqUrl", request.getRequestURI());
-
+mapPaging.put("boardPagingYn", "N");
 /**페이징 코드 추가부분 e *******************************/
 
 ArrayList<BookDTO> bookList = dao.selectListPage(param);
@@ -65,48 +65,13 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-	function borrow() {
-		var books =[];
-		var count = 0;
-		  $("input[type='checkbox']:checked").each(function (idx) {
-              books.push(this.value);
-              count++;
-          });
-		  console.log("books  : " , books);
-		//alert("대여하기");
-		//console.log()
-		if(count == 0){
-			alert('한 권 이상 선택하세요');
-			return;
-		}
-		
-		if(count > 5){
-			alert('한번에 다섯권이하로 선택하세요');
-			return;
-		}
-		
-		//var chk = prompt
-		
-		var form = document.getElementById("bookListForm");
-		
-		form.submit();
-
-	}
-	
-	function addBook(){
-		
-		location.href("../book/BookAdd.jsp");
-		
-	}
-	
-</script>
+<script src="../js/bookBorrowReturn.js"></script>
 </head>
 <body>
 
 	<%@ include file="../inc/Header_inc.jsp"%>
 	<%@ include file="../inc/Header.jsp"%>
+	<div class="container">
 	<h2>도서목록</h2>
 	<form method="get">
 		<table class="table" border="1" width="90%">
@@ -227,6 +192,6 @@ dao.close();
 			</td>
 		</tr>
 	</table>
-
+</div>
 </body>
 </html>

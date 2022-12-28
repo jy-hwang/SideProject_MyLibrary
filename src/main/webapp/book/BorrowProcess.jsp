@@ -11,7 +11,10 @@
 <%
 
 	BookDAO bookDao = new BookDAO();
+	BookDTO bookDto = new BookDTO();
 	BorrowDetailDAO borrowDao = new BorrowDetailDAO();
+	
+	BorrowDetailDTO borrowDto = new BorrowDetailDTO();
 	
 	String mId = session.getAttribute("UserId").toString();
 
@@ -24,17 +27,16 @@
 	for(String s : borrowList){
 		System.out.println("books.book_code  : " + s);
 		param.put("bookCode",s);
+		param.put("borrowStatus","BK102");
 	
-		param.put("borrowStatus","BK104");
-		result1 += borrowDao.returnBookDetail(param);
-		param.put("bookStatus","BK101");
+		result1 += borrowDao.borrowBookDetail(param);
+		param.put("bookStatus","BK102");
 		result2 += bookDao.borrowReturnBook(param);
 	} 
 
-
 	bookDao.close();
 	borrowDao.close();
-	String msg = result1 + " 권의 반납처리가 완료되었습니다.";
-	JSFunction.alertLocation(response, msg ,"../book/BookList.jsp");
+	String msg = result1 + " 권의 대여처리가 완료되었습니다.";
+	JSFunction.alertLocation(response, msg ,"../book/BorrowDetail.jsp");
 	
 %>

@@ -14,7 +14,7 @@ public class MemberDAO extends DBConnPool {
 		int result = 0;
 
 		try {
-			String query = " insert into member (member_no,password,email,member_type) " + " values (?,?,? ) ";
+			String query = " insert into member (member_no,password,email,member_type) values (?, ?, ? ) ";
 			psmt = con.prepareStatement(query);
 
 			psmt.setString(1, dto.getMemberNo());
@@ -115,19 +115,19 @@ public class MemberDAO extends DBConnPool {
 		return dto;
 
 	}
-	
+
 	public MemberDTO getStfMemberDTO(String memberNo, String password) {
-		
+
 		MemberDTO dto = new MemberDTO();
-		
+
 		String query = " select m.member_no, stf.staff_nm, m.member_type from member m inner join staff stf on stf.staff_no = m.member_no where m.member_no = ? and m.password = ? ";
-		
+
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, memberNo);
 			psmt.setString(2, password);
 			rs = psmt.executeQuery();
-			
+
 			if (rs.next()) {
 				dto.setMemberNo(rs.getString(1));
 				dto.setMemberNm(rs.getString(2));
@@ -137,29 +137,29 @@ public class MemberDAO extends DBConnPool {
 			System.out.println("쿼리오류임 : " + query);
 			e.printStackTrace();
 		}
-		
+
 		return dto;
-		
+
 	}
-	
+
 	public MemberDTO getPubMemberDTO(String memberNo, String password) {
-		
+
 		MemberDTO dto = new MemberDTO();
-		
+
 		String query = " select m.member_no, pub.pub_nm, m.member_type from member m inner join public pub on pub.PUB_NO = m.member_no where m.member_no = ? and m.password = ? ";
-		
+
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, memberNo);
 			psmt.setString(2, password);
 			rs = psmt.executeQuery();
-			
+
 			if (rs.next()) {
 				dto.setMemberNo(rs.getString(1));
 				dto.setMemberNm(rs.getString(2));
 				dto.setMemberType(rs.getString(3));
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("쿼리오류임 : " + query);
 			e.printStackTrace();

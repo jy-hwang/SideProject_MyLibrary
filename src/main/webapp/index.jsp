@@ -9,10 +9,9 @@
 <body>
 <h2>Hello JSP Side Project - MyLibrary</h2>
 
-<button type='button' onclick=
-	"location.href='model1/jsp/book/BookList.jsp'">model1 게시판으로 가기</button>
+<button type='button' onclick="location.href='book/BookList.jsp';">myLibrary</button>
 
-model2 게시판으로 가기
+<a href="../board/list.do?boardId=10">model2</a>
 
 </body>
 </html>

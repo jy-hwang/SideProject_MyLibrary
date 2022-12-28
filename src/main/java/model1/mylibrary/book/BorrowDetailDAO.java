@@ -124,20 +124,19 @@ public class BorrowDetailDAO extends DBConnPool {
 	public int borrowBookDetail(Map<String, Object> map) {
 		int result = 0;
 
-
 		String query = " insert into book_borrow_detail ( book_code, member_no, borrow_end_schedule, borrow_status , regi_user) "
 				+ " values( ?, ? , date_add(now(), INTERVAL 14 DAY), ? , ? ) ";
-		
+
 		try {
 
 			psmt = con.prepareStatement(query);
 			// 인파라미터 설정
-				psmt.setString(1, map.get("bookCode").toString());
-				psmt.setString(2, map.get("memberNo").toString());
-				psmt.setString(3, map.get("borrowStatus").toString());
-				psmt.setString(4, map.get("memberNo").toString());
-				
-				result += psmt.executeUpdate();
+			psmt.setString(1, map.get("bookCode").toString());
+			psmt.setString(2, map.get("memberNo").toString());
+			psmt.setString(3, map.get("borrowStatus").toString());
+			psmt.setString(4, map.get("memberNo").toString());
+
+			result += psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -145,22 +144,22 @@ public class BorrowDetailDAO extends DBConnPool {
 		return result;
 
 	}
-	
+
 	public int returnBookDetail(Map<String, Object> map) {
 		int result = 0;
 
 		String query = " update book_borrow_detail set borrow_status = ?,borrow_end_time = now() , updt_user = ? ,updt_date = now() where book_code = ? and member_no = ? and borrow_status = 'BK102'";
-		
+
 		try {
 
 			psmt = con.prepareStatement(query);
 			// 인파라미터 설정
-				psmt.setString(1, map.get("borrowStatus").toString());
-				psmt.setString(2, map.get("memberNo").toString());
-				psmt.setString(3, map.get("bookCode").toString());
-				psmt.setString(4, map.get("memberNo").toString());
-				
-				result += psmt.executeUpdate();
+			psmt.setString(1, map.get("borrowStatus").toString());
+			psmt.setString(2, map.get("memberNo").toString());
+			psmt.setString(3, map.get("bookCode").toString());
+			psmt.setString(4, map.get("memberNo").toString());
+
+			result += psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -168,7 +167,5 @@ public class BorrowDetailDAO extends DBConnPool {
 		return result;
 
 	}
-	
-	
-	
+
 }

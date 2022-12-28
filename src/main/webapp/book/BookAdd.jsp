@@ -65,16 +65,7 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-$(function(){
-$("#addBook").click(function(
-		alert("click!");
-		
-		));	
-});
-
-</script>
+<script src="../js/bookBorrowReturn.js"></script>
 </head>
 <body>
 

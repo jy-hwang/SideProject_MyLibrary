@@ -1,17 +1,30 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="model1.mylibrary.seat.UseSeatDetailDTO"%>
+<%@page import="model1.mylibrary.seat.UseSeatDetailDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model1.mylibrary.seat.SeatDTO"%>
 <%@page import="model1.mylibrary.seat.SeatDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../member/IsStudent.jsp"%>
 <%
-String seatStatus = "이용가능";
-pageContext.setAttribute("seatStatus", seatStatus);
 
-SeatDAO dao = new SeatDAO();
-ArrayList<SeatDTO> seatList = dao.selectListSeatDTO();
+SeatDAO seatDAO = new SeatDAO();
+ArrayList<SeatDTO> seatList = seatDAO.selectListSeatDTO();
 
-dao.close();
+UseSeatDetailDAO usdDAO = new UseSeatDetailDAO();
+
+
+String memberNo = session.getAttribute("UserId").toString();
+
+
+
+UseSeatDetailDTO usdDTO = usdDAO.selectUseSeat(memberNo);
+
+
+seatDAO.close();
 %>
 <!DOCTYPE html>
 <html>
@@ -35,52 +48,17 @@ dao.close();
 }
 </style>
 
-<script>
-function useSeat(elem){
-	var seatId = elem.id.substring(elem.id.length-2,elem.id.length);
-	
-	var useSeat = confirm(seatId + "번 좌석을 이용하시겠습니까?");
-	var seatForm = document.getElementById("seatForm");
-	if(useSeat){
-		seatForm.seatId.value = elem.id;
-		seatForm.submit();
-	}
-	
-}
-function lpad(val, padLength, padString){
-    while(val.length < padLength){
-        val = padString + val;
-    }
-    return val;
-}
-
-</script>
+<script src="../js/seatUseEnd.js"></script>
 </head>
 <body>
 	<%@ include file="../inc/Header_inc.jsp"%>
 	<%@ include file="../inc/Header.jsp"%>
 
-	<%--
-	String[] strArr = new String[20];
-	for (int i = 0; i < strArr.length; i++) {
-		strArr[i] = Integer.toString(i + 1);
-	}
-	int trCnt = strArr.length / 4;
-	--%>
+	
 	<div class="container mt-3">
+	<h3>3층열람실</h3>
 	
-<!-- 		<table>
-			<tr>
-				<td>반복1</td>
-				<td>반복2</td>
-				<td></td>
-				<td>반복3</td>
-				<td>반복4</td>
-			</tr>
-			<tr>
-		</table> -->
-	
-		<table id="seatTable" class="table seat-table">
+		<table id="seatTable" class="table seat-table mt-3">
 			<tr>
 				<%
 				int seatNo = 0 , seatCnt = 1;
@@ -128,8 +106,17 @@ function lpad(val, padLength, padString){
 				
 			</tr>
 		</table>
-		<form id="seatForm" action="UseSeatProcess.jsp" method="post" style="display:none">
-			<input type="text" name="seatId"/>
+		
+		<form id="useDetailForm" style="display: none">
+			<input type="text" name="seatId" value="<%= usdDTO.getSeatId() != null ? usdDTO.getSeatId() : "" %>" />
+			<input type="text" name="memberNo" value="<%= usdDTO.getMemberNo() != null ? usdDTO.getMemberNo() : "" %>" />
+			<input type="text" name="useEndSchedule" value="<%= usdDTO.getUseEndSchedule() != null ? usdDTO.getUseEndSchedule() : "" %>" />
+			<input type="text" name="useStatus" value="<%= usdDTO.getUseStatus() != null ? usdDTO.getUseStatus() : "" %>" />
+		</form>
+		
+		<form id="seatForm" action="UseSeatProcess.jsp" method="post" style="display: none">
+			<input type="text" name="seatId" />
+			<input type="text" name="useStatus" value="SE102" />
 		</form>
 	</div>
 </body>

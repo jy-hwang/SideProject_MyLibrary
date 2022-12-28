@@ -19,15 +19,15 @@ public class DBConnPool {
 	public DBConnPool() {
 		try {
 			Context initCtx = new InitialContext();
-			Context ctx = (Context)initCtx.lookup("java:comp/env");
-			DataSource source = (DataSource)ctx.lookup("dbcp_mylibrary");
+			Context ctx = (Context) initCtx.lookup("java:comp/env");
+			DataSource source = (DataSource) ctx.lookup("dbcp_mylibrary");
 			con = source.getConnection();
 			System.out.println("DB 커넥션 풀 연결 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void close() {
 		try {
 			if (rs != null) {

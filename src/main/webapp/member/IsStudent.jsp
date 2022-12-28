@@ -8,9 +8,9 @@ if(session.getAttribute("UserId") == null){
 	return;
 }
 
-//userType 체크 : STF = 직원.
+//userType 체크 : STU = 학생, 학생이아니면 접근 안되도록.
 if ((session.getAttribute("UserType") == null)
-		|| (session.getAttribute("UserType").toString().equalsIgnoreCase("STU"))) {
+		|| !(session.getAttribute("UserType").toString().equalsIgnoreCase("STU"))) {
 	JSFunction.alertLocation("학생만 이용가능합니다", "../book/BookList.jsp", out);
 	return;
 }
