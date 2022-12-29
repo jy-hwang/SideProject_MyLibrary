@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Hello JSP Side Project - MyLibrary</h2>
-
-<button type='button' onclick="location.href='book/BookList.jsp';">myLibrary</button>
-
-<a href="../board/list.do?boardId=10">model2</a>
-
+	<%@ include file="../inc/Header_inc.jsp"%>
+	<div class="container">
+		<h2>Hello 2nd Project - MyLibrary</h2>
+		<div class="justify-content-center">
+		<a  href="../book/BookList.jsp">
+			<img alt="" src="../images/Main.jpg">
+			</a>
+		</div>
+	</div>
 </body>
 </html>

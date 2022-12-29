@@ -25,48 +25,41 @@
 	<%@ include file="../inc/Header.jsp"%>
 	<div class="container">
 		<h2>희망도서신청</h2>
-		<form method="get">
-			<table class="table" border="1" width="90%">
-				<tr>
-					<td align="center"><select name="searchField1">
-							<option value="book_title">제목</option>
-							<option value="book_author">저자</option>
-							<option value="publisher">출판사</option>
-					</select> <input type="text" name="searchWord1" /> <input type="submit"
-						class="btn btn-warning" value="검색하기" /></td>
-				</tr>
-				<tr>
-					<td align="center"><select name="searchField2">
-							<option value="publish_date">발행일</option>
-					</select> <input type="date" name="searchWord2" /> <input type="submit"
-						class="btn btn-danger" value="검색하기" /></td>
-				</tr>
-			</table>
-		</form>
 		<form id="bookListForm" method="post" action="BorrowProcess.jsp">
 			<table class="table table-striped" border="1" width="90%">
+				<colgroup>
+					<col width='5%'>
+					<col width='5%'>
+					<col width='45%'>
+					<col width='8%'>
+					<col width='15%'>
+					<col width='8%'>
+					<col width='8%'>
+				</colgroup>
 				<thead class="text-center">
 					<tr>
 						<th>선택</th>
 						<th>번호</th>
 						<th>제목</th>
-						<th>작가</th>
-						<th>출판사</th>
-						<th>발행일</th>
-						<th>대여상태</th>
+						<th>작성자</th>
+						<th>신청일</th>
+						<th>조회수</th>
+						<th>신청상태</th>
 					</tr>
 				</thead>
+						
 				<tbody class="text-center">
 					<c:choose>
-						<c:when test="{$ empty boardLists }">
+						<c:when test="${ empty boardLists }">
 							<tr>
 
-								<td colspan="6" align="center">등록된 게시물이 없습니다^^*</td>
+								<td colspan="7" align="center">등록된 게시물이 없습니다^^*</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${boardLists }" var="row" varStatus="loop">
 								<tr align="center">
+									<td>	<input type="checkbox" name="bookChk" /></td>
 									<td>${map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index) }
 									</td>
 									<td align="left"><a
@@ -85,14 +78,26 @@
 				</tbody>
 			</table>
 		</form>
+
 		<table class="table" width="90%">
-			<tr align="center">
-				<td>${map.pagingImg }</td>
-				<td width="100">
+			<tr>
+				<td colspan = '2'>${map.pagingImg }</td>
+			</tr>
+			<tr>
+				<td align="center"><select name="searchField1">
+						<option value="book_title">제목</option>
+						<option value="book_author">저자</option>
+						<option value="publisher">출판사</option>
+				</select> <input type="text" name="searchWord1" /> <input type="submit"
+					class="btn btn-warning" value="검색하기" /></td>
+				<td>
 					<button type="button" class="btn btn-info">희망도서신청</button>
+					<button type="button" class="btn btn-danger">보류처리</button>
+					<button type="button" class="btn btn-success">완료처리</button>
 				</td>
 			</tr>
 		</table>
+		
 	</div>
 </body>
 </html>

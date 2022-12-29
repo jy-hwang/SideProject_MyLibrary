@@ -64,6 +64,10 @@ public class BoardDAO extends DBConnPool {
 				dto.setBbsIdx(rs.getInt("bbs_idx"));
 				dto.setBoardId(rs.getString("board_id"));
 				dto.setTitle(rs.getString("title"));
+				dto.setMemberNo(rs.getString("member_no"));
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
+				dto.setRegiDate(rs.getString("regi_date"));
 				dto.setCommentCount(rs.getInt("commentCount"));
 
 				board.add(dto);
