@@ -48,7 +48,7 @@ seatDAO.close();
 }
 </style>
 
-<script src="../js/seatUseEnd.js"></script>
+<script src="../js/SeatUseEnd.js"></script>
 </head>
 <body>
 	<%@ include file="../inc/Header_inc.jsp"%>

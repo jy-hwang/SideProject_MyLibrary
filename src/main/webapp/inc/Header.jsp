@@ -37,7 +37,7 @@
 				<li><a href="../board/list.do?boardId=20">FAQ</a></li>
 				<li><a href="../board/list.do?boardId=30">QnA</a></li>
 				<li><a href="../board/list.do?boardId=40">희망도서신청</a></li>
-				<li><a href="../board/Welcome.jsp">희망도서신청</a></li>
+				<li><a href="../board/Welcome.jsp">오시는길</a></li>
 			</ul></li>
 		<li><a href="../member/Logout.jsp">로그아웃</a></li>
 	</ul>

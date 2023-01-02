@@ -77,7 +77,7 @@ public class BorrowDetailDAO extends DBConnPool {
 
 		// String query1 = "select * from ( select tb.* , rownum rNum from ( select *
 		// from board ";
-		String query = "  SELECT bbd.MEMBER_NO, bbd.BORROW_START_TIME,bbd.BORROW_END_TIME,bbd.borrow_STATUS,b.book_code,b.BOOK_TITLE,b.BOOK_AUTHOR,b.BOOK_GENRE,cmmn1.CMMN_NAME AS 'borrow_status_nm', cmmn2.CMMN_NAME AS 'book_genre_nm',b.publisher FROM book_borrow_DETAIL bbd INNER JOIN book b ON bbd.BOOK_CODE  = b.BOOK_CODE   INNER JOIN CMMN cmmn1    ON bbd.borrow_status = cmmn1.CMMN_CODE    INNER JOIN CMMN cmmn2    ON b.book_genre = cmmn2.CMMN_CODE where bbd.member_no = ? ";
+		String query = "  SELECT bbd.MEMBER_NO, bbd.BORROW_START_TIME,bbd.BORROW_END_TIME,bbd.borrow_STATUS,b.book_code,b.BOOK_TITLE,b.BOOK_AUTHOR,b.BOOK_GENRE,cmmn1.CMMN_NAME AS 'borrow_status_nm', cmmn2.CMMN_NAME AS 'book_genre_nm',b.publisher FROM book_borrow_detail bbd INNER JOIN book b ON bbd.BOOK_CODE  = b.BOOK_CODE   INNER JOIN cmmn cmmn1    ON bbd.borrow_status = cmmn1.CMMN_CODE    INNER JOIN cmmn cmmn2    ON b.book_genre = cmmn2.CMMN_CODE where bbd.member_no = ? ";
 		if (map.get("searchWord1") != null && map.get("searchWord1") != "") {
 			query += " and " + map.get("searchField1") + " like '%" + map.get("searchWord1") + "%'";
 		}
