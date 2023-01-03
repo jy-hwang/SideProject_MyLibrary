@@ -72,7 +72,7 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/seatUseEnd.js"></script>
+<script src="../js/SeatUseEnd.js"></script>
 </head>
 <body>
 
