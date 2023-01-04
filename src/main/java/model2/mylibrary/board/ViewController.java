@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model2.mylibrary.board.vo.BoardDTO;
+
 @WebServlet("/mvcboard/view.do")
 public class ViewController extends HttpServlet {
 

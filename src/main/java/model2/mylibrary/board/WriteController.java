@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 
 import fileupload.FileUtil;
+import model2.mylibrary.board.vo.BoardDTO;
 import utils.JSFunction;
 
 public class WriteController extends HttpServlet {

@@ -1,21 +1,36 @@
-package model2.mylibrary.board;
+package model2.mylibrary.board.dao;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
-import java.util.Vector;
 
 import common.DBConnPool;
 import model2.mylibrary.board.vo.BoardDTO;
 
-public class BoardDAO extends DBConnPool {
+public class BoardDAO2 extends DBConnPool {
 
-	public BoardDAO() {
+	private static BoardDAO2 boardDAO2;
+
+	private BoardDAO2() {
+
 		super();
+
 	}
 
-	public int selectCount(Map<String, Object> map) {
-		int totalCount = 0;
+	public static BoardDAO2 getInstance() {
+
+		if (boardDAO2 == null) {
+			boardDAO2 = new BoardDAO2();
+
+		}
+
+		return boardDAO2;
+	}
+
+	// 게시판 글의 갯수 구하기
+	public int selectListCount(Map<String, Object> map) {
+
+		int listCount = 0;
 
 		String query = " select count(*) from multi_board where board_id = ?  and del_yn = 'N' ";
 		if (map.get("searchWord") != null) {
@@ -28,18 +43,21 @@ public class BoardDAO extends DBConnPool {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 
-				totalCount = rs.getInt(1);
+				listCount = rs.getInt(1);
 			}
-		} catch (SQLException e) {
-			System.out.println("게시물 수를 구하는 중 예외 발생");
-			e.printStackTrace();
+		} catch (Exception ex) {
+			System.out.println("getListCount 에러 : " + ex);
+		} finally {
+			close();
 		}
 
-		return totalCount;
+		return listCount;
+
 	}
 
-	public List<BoardDTO> selectListPage(Map<String, Object> map) {
-		List<BoardDTO> board = new Vector<BoardDTO>();
+	public ArrayList<BoardDTO> selectArticleList(Map<String, Object> map) {
+
+		ArrayList<BoardDTO> articleList = new ArrayList<BoardDTO>();
 
 		String query = " SELECT mb.bbs_idx, mb.board_id , mb.title, mb.regi_date, mb.member_no, mb.ofile, mb.sfile, mb.visit_count, mb.down_count "
 				+ " , (select count(0) from comment c where mb.bbs_idx = c.bbs_idx and c.del_yn = 'N' ) commentCount "
@@ -71,60 +89,20 @@ public class BoardDAO extends DBConnPool {
 				dto.setRegiDate(rs.getString("regi_date"));
 				dto.setCommentCount(rs.getInt("commentCount"));
 
-				board.add(dto);
+				articleList.add(dto);
 			}
 
 		} catch (SQLException e) {
-			System.out.println("게시물 페이징 처리 중 예외 발생");
-			e.printStackTrace();
-		}
-
-		return board;
-
-	}
-
-	public BoardDTO selectView(String idx) {
-		BoardDTO dto = new BoardDTO();
-
-		String query = " select * from multi_board where bbs_idx = ?";
-
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
-
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-
-			}
-
-		} catch (SQLException e) {
-			System.out.println("쿼리오류");
+			System.out.println("쿼리 에러 발생");
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("게시물 상세보기 중 예외 발생");
-			e.printStackTrace();
+			System.out.println("기타 여러가지 오류 발생");
+		} finally {
+			close();
 		}
 
-		return dto;
+		return articleList;
 
-	}
-
-	public void updateVisitCount(String idx) {
-
-		String query = "update mvcboard set visitcount = visitcount + 1 where idx = ? ";
-
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
-			;
-			psmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			System.out.println("게시물 조회수 증가 중 예외발생");
-			e.printStackTrace();
-		}
 	}
 
 }

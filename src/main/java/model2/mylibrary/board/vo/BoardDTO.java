@@ -1,4 +1,4 @@
-package model2.mylibrary.board;
+package model2.mylibrary.board.vo;
 
 public class BoardDTO {
 

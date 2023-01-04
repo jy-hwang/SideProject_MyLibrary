@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 
 import fileupload.FileUtil;
+import model2.mylibrary.board.vo.BoardDTO;
 import utils.JSFunction;
 
 @WebServlet("/mvcboard/edit.do")

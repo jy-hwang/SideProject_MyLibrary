@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model2.mylibrary.board.vo.BoardDTO;
 import utils.BoardPageBoot;
 
 @WebServlet("/board/list.do")
