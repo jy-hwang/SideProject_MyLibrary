@@ -69,7 +69,27 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/BookBorrowReturn.js"></script>
+<script type="text/javascript">
+
+function returnBook() {
+	var books = [];
+	var count = 0;
+	$("input[type='checkbox']:checked").each(function(idx) {
+		books.push(this.value);
+		count++;
+	});
+
+	if (count == 0) {
+		alert('한 권 이상 선택하세요');
+		return;
+	}
+
+	var form = document.getElementById("borrowListForm");
+
+	form.submit();
+
+}
+</script>
 </head>
 <body>
 

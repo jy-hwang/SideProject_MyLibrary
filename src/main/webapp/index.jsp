@@ -28,8 +28,8 @@ function chatWinOpen() {
 		<h2>Hello 2nd Project - MyLibrary</h2>
 		<div class="justify-content-center">
 		<a  href="./book/BookList.jsp">
-			<img alt="" src="./images/Main.jpg">
-			</a>
+			<!-- <img alt="" src="./images/Main.jpg"> -->
+			바로가기</a>
 		</div>
 		
 		<div>
