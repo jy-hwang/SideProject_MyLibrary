@@ -1,23 +1,39 @@
 @charset "UTF-8";
 
+#chatMember:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 #chatWindow {
 	border: 1px solid black;
-	width: 270px;
+	width: 300px;
 	height: 310px;
 	overflow: scroll;
 	padding: 5px;
+	float: left;
+}
+
+#memberWindow {
+	border: 1px solid black;
+	width: 150px;
+	height: 310px;
+	word-break: break-all;
+	float: left;
 }
 
 #chatMessage {
 	width: 236px;
 	height: 30px;
+	clear: both;
 }
 
 #sendBtn {
 	height: 30px;
 	position: relative;
 	top: 2px;
-	left: -2px;
+	left: 20px;
 }
 
 #closeBtn {
@@ -28,12 +44,21 @@
 }
 
 #chatId {
-	width: 158px;
+	width: 200px;
 	height: 24px;
 	border: 1px solid #AAAAAA;
-	background-color : #EEEEEE;
+	background-color: #EEEEEE;
+	padding-left: 15px;
 }
 
 .myMsg {
 	text-align: right;
+}
+
+.public {
+	background-color: beige;
+}
+
+.whisper {
+	background-color: lightseagreen;
 }
