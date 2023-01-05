@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.seat-table tr td {
+	border: 1px solid black;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+}
+
+.seat-table tr td:hover:not(.border0) {
+	background-color: gray;
+}
+
+.border0 {
+	border: 0px !important;
+}

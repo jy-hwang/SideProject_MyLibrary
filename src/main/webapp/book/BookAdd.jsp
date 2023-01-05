@@ -65,7 +65,7 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../js/bookBorrowReturn.js"></script>
+<script src="../resources/js/bookBorrowReturn.js"></script>
 </head>
 <body>
 

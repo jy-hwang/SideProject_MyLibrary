@@ -31,24 +31,10 @@ seatDAO.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.seat-table tr td {
-	border: 1px solid black;
-	width: 100px;
-	height: 100px;
-	text-align: center;
-}
+<link rel="stylesheet" type="text/css" href="../css/seat.css" />
 
-.seat-table tr td:hover:not(.border0) {
-	background-color: gray;
-}
 
-.border0 {
-	border: 0px !important;
-}
-</style>
-
-<script type="text/javascript" src="../js/seat.js"></script>
+<script type="text/javascript" src="../resources/js/seat.js"></script>
 </head>
 <body>
 	<%@ include file="../inc/Header_inc.jsp"%>

@@ -7,7 +7,7 @@
 	String uTp = (String)session.getAttribute("UserType");
 %>
 
-<link rel="stylesheet" type="text/css" href="../css/header.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css" />
 
 <div id="header">
 	<ul class="header_ul_main">
@@ -38,6 +38,7 @@
 				<li><a href="../board/list.do?boardId=30">QnA</a></li>
 				<li><a href="../board/list.do?boardId=40">희망도서신청</a></li>
 				<li><a href="../board/Welcome.jsp">오시는길</a></li>
+				<li><a href="../webSocket/ChatMain.jsp">담소나누기</a></li>
 			</ul></li>
 		<li><a href="../member/Logout.jsp">로그아웃</a></li>
 	</ul>

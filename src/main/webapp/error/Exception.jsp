@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="justify-content-center">
 			<a href="../book/BookList.jsp"> <img alt=""
-				src="../images/Error.jpg">
+				src="../resources/images/Error.jpg">
 			</a>
 		</div>
 		<%
