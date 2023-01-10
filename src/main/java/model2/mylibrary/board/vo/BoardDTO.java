@@ -174,4 +174,17 @@ public class BoardDTO {
 		this.updtDate = updtDate;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "BoardDTO [bbsIdx=" + bbsIdx + ", boardId=" + boardId + ", memberNo=" + memberNo + ", title=" + title
+				+ ", content=" + content + ", ofile=" + ofile + ", sfile=" + sfile + ", postStatus=" + postStatus
+				+ ", visibleYn=" + visibleYn + ", etcStatus1=" + etcStatus1 + ", etcStatus2=" + etcStatus2
+				+ ", etcStatus3=" + etcStatus3 + ", downCount=" + downCount + ", visitCount=" + visitCount
+				+ ", commentCount=" + commentCount + ", regiUser=" + regiUser + ", regiDate=" + regiDate + ", updtUser="
+				+ updtUser + ", updtDate=" + updtDate + "]";
+	}
+
+	
+	
 }

@@ -33,7 +33,7 @@
 			</ul></li>
 		<li><a href="#">알립니다</a>
 			<ul class="ul_sub">
-				<li><a href="../board/list.do?boardId=10">공지사항</a></li>
+				<li><a href="../boardList.bo?boardId=10">공지사항</a></li>
 				<li><a href="../board/list.do?boardId=20">FAQ</a></li>
 				<li><a href="../board/list.do?boardId=30">QnA</a></li>
 				<li><a href="../board/list.do?boardId=40">희망도서신청</a></li>

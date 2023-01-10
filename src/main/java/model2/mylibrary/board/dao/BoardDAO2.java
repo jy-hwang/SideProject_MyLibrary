@@ -1,32 +1,43 @@
 package model2.mylibrary.board.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.sql.DataSource;
 
 import common.DBConnPool;
 import model2.mylibrary.board.vo.BoardDTO;
 
 public class BoardDAO2 extends DBConnPool {
 
+	DataSource ds;
+	Connection con ;
+	
 	private static BoardDAO2 boardDAO2;
 
 	private BoardDAO2() {
-
 		super();
+		System.out.println("BoardDAO2 생성자 호출");
 
 	}
 
 	public static BoardDAO2 getInstance() {
-
+		System.out.println("BoardDAO2 getInstance 호출");
 		if (boardDAO2 == null) {
 			boardDAO2 = new BoardDAO2();
-
+			
 		}
 
 		return boardDAO2;
 	}
 
+	public void setConnection(Connection con) {
+		this.con = con;
+				
+	}
+	
 	// 게시판 글의 갯수 구하기
 	public int selectListCount(Map<String, Object> map) {
 
@@ -74,7 +85,7 @@ public class BoardDAO2 extends DBConnPool {
 			psmt.setString(1, map.get("boardId").toString());
 			psmt.setInt(2, Integer.parseInt(map.get("start").toString()));
 			psmt.setInt(3, Integer.parseInt(map.get("end").toString()));
-			System.out.println(query + " " + map.get("start").toString() + " " + map.get("end").toString());
+			System.out.println(query + " " + map.get("boardId").toString() + " " + map.get("start").toString() + " " + map.get("end").toString());
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -89,6 +100,7 @@ public class BoardDAO2 extends DBConnPool {
 				dto.setRegiDate(rs.getString("regi_date"));
 				dto.setCommentCount(rs.getInt("commentCount"));
 
+				System.out.println(dto);
 				articleList.add(dto);
 			}
 

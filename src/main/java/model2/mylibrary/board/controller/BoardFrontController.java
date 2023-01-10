@@ -2,6 +2,7 @@ package model2.mylibrary.board.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,9 @@ public class BoardFrontController extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 
+		System.out
+				.println("RequestURI : " + RequestURI + ", contextPath :  " + contextPath + " , command :  " + command);
+
 		if (command.equals("/boardWriteForm.bo")) {
 			forward = new ActionForward();
 			forward.setPath("/board/qna_board_write.jsp");
@@ -38,7 +42,7 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/boardList.bo")) {
+		} else if (command.equals("/boardList.bo")) {
 			action = new BoardListAction();
 			try {
 
@@ -48,6 +52,17 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
+		if (forward != null) {
+			if (forward.isRedirect()) {
+				response.sendRedirect(forward.getPath());
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+
+			}
+		}
+
 	}
 
 	@Override
