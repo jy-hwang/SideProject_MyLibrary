@@ -40,7 +40,7 @@ public class ChatServer {
 	@OnClose
 	public void onClose(Session session) {
 		clients.remove(session);
-		System.out.println("웹 소캣 종료 : " + session.getId());
+		System.out.println("웹 소켓 종료 : " + session.getId());
 	}
 
 	@OnError

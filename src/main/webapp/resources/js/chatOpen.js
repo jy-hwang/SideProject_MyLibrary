@@ -12,7 +12,7 @@ function chatWinOpen() {
 		return;
 	}
 
-	window.open("./ChatWindow.jsp?chatNickname="+chatNickname.value, "", "width = 480, height =600");
+	window.open("./chatWindow.jsp?chatNickname="+chatNickname.value, "", "width = 480, height =600");
 	chatNickname.value = "";
 
 }

@@ -2,7 +2,6 @@
  * 
  */
 
-
 function formValidate() {
 	var frm = document.loginForm;
 
@@ -21,3 +20,4 @@ function formValidate() {
 	frm.submit();
 
 }
+

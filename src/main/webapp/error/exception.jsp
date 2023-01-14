@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../inc/Header_inc.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
 	<div class="container">
 		<div class="justify-content-center">
-			<a href="../book/BookList.jsp"> <img alt=""
-				src="../resources/images/Error.jpg">
-			</a>
+			<a href="../book/bookList.jsp"> <img alt="" src="../resources/images/error.jpg"></a>
 		</div>
 		<%
 		out.print("오류가 발생했습니다.");

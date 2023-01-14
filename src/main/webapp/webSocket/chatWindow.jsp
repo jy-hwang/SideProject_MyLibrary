@@ -92,7 +92,7 @@ webSocket.onmessage = function(event) {
 <title>웹 소켓 채팅</title>
 </head>
 <body>
-	<%@ include file="../inc/Header_inc.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
 	<div class="container">
 	대화명 :
 	<input type="text" id="chatNickname" value="${param.chatNickname} " readonly>

@@ -29,7 +29,7 @@ function borrow() {
 
 function addBook() {
 
-	location.href("../book/BookAdd.jsp");
+	location.href("../book/bookAdd.jsp");
 
 }
 

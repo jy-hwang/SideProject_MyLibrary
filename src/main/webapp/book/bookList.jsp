@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../member/IsLoggedIn.jsp"%>  
+<%@ include file="../member/isLoggedIn.jsp"%>  
 <%
 BookDAO dao = new BookDAO();
 
@@ -69,8 +69,8 @@ dao.close();
 </head>
 <body>
 
-	<%@ include file="../inc/Header_inc.jsp"%>
-	<%@ include file="../inc/Header.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
+	<%@ include file="../inc/header.jsp"%>
 	<div class="container">
 	<h2>도서목록</h2>
 	<form method="get">
@@ -95,7 +95,7 @@ dao.close();
 			</tr>
 		</table>
 	</form>
-	<form id="bookListForm" method="post" action="BorrowProcess.jsp">
+	<form id="bookListForm" method="post" action="borrowProcess.jsp">
 	<table class="table table-striped" border="1" width="90%">
 	<thead class="text-center">
 		<tr>
@@ -161,14 +161,14 @@ dao.close();
 			
 					<%
 			//System.out.println(dto.getBookStatus());
-					if("stf".equalsIgnoreCase(session.getAttribute("UserType").toString())){
+					if("stf".equalsIgnoreCase(session.getAttribute("userType").toString())){
 						
 					
 			%>
 			<td><button type="button" class="btn btn-info"
 					onclick="borrow()">대여하기</button>
 					<button type="button" class="btn btn-info"
-					onclick="location.href='../book/BookAdd.jsp';">책추가</button></td>
+					onclick="location.href='../book/bookAdd.jsp';">책추가</button></td>
 			<%
 					}else{
 						

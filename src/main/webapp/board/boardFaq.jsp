@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="/member/IsLoggedIn.jsp"%>
+<%@ include file="/member/isLoggedIn.jsp"%>
 
 
 <!DOCTYPE html>
@@ -21,12 +21,12 @@
 </head>
 <body>
 
-	<%@ include file="../inc/Header_inc.jsp"%>
-	<%@ include file="../inc/Header.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
+	<%@ include file="../inc/header.jsp"%>
 	<div class="container">
 		<h2>FAQ</h2>
 
-		<form id="bookListForm" method="post" action="BorrowProcess.jsp">
+		<form id="bookListForm" method="post" action="borrowProcess.jsp">
 			<table class="table table-striped" border="1" width="90%">
 				<colgroup>
 					<col width='5%'>

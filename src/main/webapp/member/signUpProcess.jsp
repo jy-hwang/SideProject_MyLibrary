@@ -18,8 +18,8 @@
 	dao.close();
 	
 	if(iResult == 1){
-		session.setAttribute("UserId", id);
-		session.setAttribute("UserName", name);
+		session.setAttribute("userId", id);
+		session.setAttribute("userName", name);
 		response.sendRedirect("../board/BoardList.jsp");
 	}else{
 		JSFunction.alertBack("회원가입에 실패하였습니다.",out);

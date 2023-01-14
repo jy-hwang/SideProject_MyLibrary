@@ -73,7 +73,7 @@ public class BoardListAction  implements Action{
 		StringBuffer forwardUrl = new StringBuffer();
 		
 		reqUrl.append("/boardList.bo?boardId=");
-		forwardUrl.append("/board/Board");
+		forwardUrl.append("/board/board");
 		
 		if (boardId.equals("10")) {
 			reqUrl.append(10);

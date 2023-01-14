@@ -8,12 +8,12 @@
 
 </head>
 <body>
-	<%@ include file="../inc/Header_inc.jsp"%>
+	<%@ include file="./inc/header_inc.jsp"%>
 	<div class="container">
 		<h2>Hello 2nd Project - MyLibrary</h2>
 		<div class="justify-content-center">
-		<a  href="./book/BookList.jsp">
-			 <img alt="" src="./resources/images/Main.jpg">
+		<a  href="./book/bookList.jsp">
+			 <img alt="" src="./resources/images/main.jpg">
 			바로가기</a>
 		</div>
 	</div>

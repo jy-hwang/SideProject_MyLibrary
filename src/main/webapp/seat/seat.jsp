@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../member/IsStudent.jsp"%>
+<%@ include file="../member/isStudent.jsp"%>
 <%
 
 SeatDAO seatDAO = new SeatDAO();
@@ -17,7 +17,7 @@ ArrayList<SeatDTO> seatList = seatDAO.selectListSeatDTO();
 UseSeatDetailDAO usdDAO = new UseSeatDetailDAO();
 
 
-String memberNo = session.getAttribute("UserId").toString();
+String memberNo = session.getAttribute("userId").toString();
 
 
 
@@ -37,8 +37,8 @@ seatDAO.close();
 <script type="text/javascript" src="../resources/js/seat.js"></script>
 </head>
 <body>
-	<%@ include file="../inc/Header_inc.jsp"%>
-	<%@ include file="../inc/Header.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
+	<%@ include file="../inc/header.jsp"%>
 
 	
 	<div class="container mt-3">
@@ -100,7 +100,7 @@ seatDAO.close();
 			<input type="text" name="useStatus" value="<%= usdDTO.getUseStatus() != null ? usdDTO.getUseStatus() : "" %>" />
 		</form>
 		
-		<form id="seatForm" action="UseSeatProcess.jsp" method="post" style="display: none">
+		<form id="seatForm" action="useSeatProcess.jsp" method="post" style="display: none">
 			<input type="text" name="seatId" />
 			<input type="text" name="useStatus" value="SE102" />
 		</form>

@@ -10,6 +10,8 @@
 	String mPw = request.getParameter("memberPw");
 	String mTp = request.getParameter("memberType");
 	
+	String idSave = request.getParameter("idSave");
+	
 	System.out.println("mId , mPw , mTp : "+ mId + " , " + mPw + " , " + mTp);
 	
 	MemberDTO dto = new MemberDTO();
@@ -24,16 +26,31 @@
 	
 	System.out.println("dto : " + dto.getMemberNo() + dto.getMemberType() + dto.getMemberNm());
 	
-	
-	
 	dao.close();
 	
 	if(dto.getMemberNo() != null){
 	
-	    session.setAttribute("UserId", dto.getMemberNo());
-	    session.setAttribute("UserName", dto.getMemberNm());
-	    session.setAttribute("UserType", dto.getMemberType());
-	    response.sendRedirect("../book/BookList.jsp");
+	    session.setAttribute("userId", dto.getMemberNo());
+	    session.setAttribute("userName", dto.getMemberNm());
+	    session.setAttribute("userType", dto.getMemberType());
+	    
+	    if(idSave != null){
+	    	System.out.println("===============cookie 만들기");
+	    	System.out.println(idSave);
+	    	Cookie cookieUserId = new Cookie("userId",dto.getMemberNo());
+			Cookie cookieUserType = new Cookie("userType",dto.getMemberType());
+
+			cookieUserId.setPath(request.getContextPath());
+	    	cookieUserType.setPath(request.getContextPath());
+	    	cookieUserId.setMaxAge(60 * 60);
+	    	cookieUserType.setMaxAge(60 * 60);
+	    	response.addCookie(cookieUserId);
+	    	response.addCookie(cookieUserType);
+	    		    	
+	    }
+	    
+	    response.sendRedirect("../book/bookList.jsp");
+	    
 	}else{
 	    JSFunction.alertBack("로그인에 실패하였습니다.",out);
 	  

@@ -10,7 +10,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="../member/IsLoggedIn.jsp"%>
+<%@ include file="../member/isLoggedIn.jsp"%>
 <%
 UseSeatDetailDAO dao = new UseSeatDetailDAO();
 
@@ -29,7 +29,7 @@ if (searchWord2 != null) {
 	param.put("searchField2", searchField2);
 	param.put("searchWord2", searchWord2);
 }
-param.put("memberNo", session.getAttribute("UserId").toString());
+param.put("memberNo", session.getAttribute("userId").toString());
 
 int totalCount = dao.selectCount(param);
 
@@ -76,8 +76,8 @@ dao.close();
 </head>
 <body>
 
-	<%@ include file="../inc/Header_inc.jsp"%>
-	<%@ include file="../inc/Header.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
+	<%@ include file="../inc/header.jsp"%>
 	<div class="container">
 		<h2>좌석이용목록</h2>
 		<form method="get">
@@ -103,7 +103,7 @@ dao.close();
 				</tr>
 			</table>
 		</form>
-		<form id="seatUseListForm" action="ReturnSeatProcess.jsp"
+		<form id="seatUseListForm" action="returnSeatProcess.jsp"
 			method="post">
 			<table class="table table-striped" border="1" width="90%">
 				<thead class="text-center">

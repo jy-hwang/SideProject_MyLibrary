@@ -20,7 +20,7 @@
 	
 	Map<String, Object> param = new HashMap<String,Object>();
 	
-	String memberNo = session.getAttribute("UserId").toString();
+	String memberNo = session.getAttribute("userId").toString();
 	
 	String useStatus = "SE104";//이용완료 SE104
 	String seatStatus ="SE101"; //이용가능 SE101
@@ -40,7 +40,7 @@
 	useSeatDetailDAO.close();
 	
 	String msg = " 좌석의 이용종료처리가 완료되었습니다.";
-	JSFunction.alertLocation(response, msg ,"./SeatUseDetail.jsp");
+	JSFunction.alertLocation(response, msg ,"./seatUseDetail.jsp");
 	
 	
 %>

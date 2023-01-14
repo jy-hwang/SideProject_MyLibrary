@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../member/IsLoggedIn.jsp"%>
+<%@ include file="../member/isLoggedIn.jsp"%>
 <%
 BookDAO dao = new BookDAO();
 
@@ -69,11 +69,11 @@ dao.close();
 </head>
 <body>
 
-	<%@ include file="../inc/Header_inc.jsp"%>
-	<%@ include file="../inc/Header.jsp"%>
+	<%@ include file="../inc/header_inc.jsp"%>
+	<%@ include file="../inc/header.jsp"%>
 	<div class="container">
 	<h2>도서추가</h2>
-	<form id="bookAddForm" method="post" action="BookAddProcess.jsp">
+	<form id="bookAddForm" method="post" action="bookAddProcess.jsp">
 		<table class="table table-striped" border="1" width="90%">
 			<thead class="text-center">
 

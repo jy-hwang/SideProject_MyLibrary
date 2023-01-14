@@ -8,8 +8,8 @@
 
 </head>
 <body>
-<%@ include file ="../inc/Header_inc.jsp" %>
-<%@ include file ="../inc/Header.jsp" %>
+<%@ include file ="../inc/header_inc.jsp" %>
+<%@ include file ="../inc/header.jsp" %>
     <h2>학생정보 </h2>
     
 

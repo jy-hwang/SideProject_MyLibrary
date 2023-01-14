@@ -72,7 +72,7 @@ public class BookDAO extends DBConnPool {
 
 		// String query1 = "select * from ( select tb.* , rownum rNum from ( select *
 		// from board ";
-		String query = " SELECT BOOK_CODE, BOOK_TITLE,BOOK_AUTHOR,BOOK_GENRE,BOOK_STATUS,c.CMMN_NAME  AS book_status_nm ,PUBLISHER,PUBLISH_DATE  FROM book b   INNER JOIN cmmn c   ON b.BOOK_STATUS = c.CMMN_CODE and c.parent_code = 1 and c.use_yn='Y' ";
+		String query = " SELECT BOOK_CODE, BOOK_TITLE,BOOK_AUTHOR,BOOK_GENRE,BOOK_STATUS,c.CMMN_NAME  AS book_status_nm ,PUBLISHER,PUBLISH_DATE  FROM book b   INNER JOIN cmmn c   ON b.BOOK_STATUS = c.CMMN_CODE and c.parent_code = 'BK100' and c.use_yn='Y' ";
 		if (map.get("searchWord1") != null && map.get("searchWord1") != "") {
 			query += "WHERE " + map.get("searchField1") + " like '%" + map.get("searchWord1") + "%'";
 		}

@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<%@ include file="../inc/Header_inc.jsp"%>
+<%@ include file="../inc/header_inc.jsp"%>
 <script type="text/javascript" src="../resources/js/signUp.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 		<div class="row">
 			<h3>회원가입</h3>
 			<fieldset>
-				<form action="SignUpProcess.jsp" name="signUpForm" method="POST" onsubmit="formValidate(this);">
+				<form action="signUpProcess.jsp" name="signUpForm" method="POST" onsubmit="formValidate(this);">
 					<div class="mb-3 row">
 						<label for="loginId" class="col-sm-2 col-form-label">회원번호</label>
 						<div class="col-sm">
