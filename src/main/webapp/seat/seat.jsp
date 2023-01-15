@@ -31,7 +31,7 @@ seatDAO.close();
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/seat.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/seat.css" />
 
 
 <script type="text/javascript" src="../resources/js/seat.js"></script>

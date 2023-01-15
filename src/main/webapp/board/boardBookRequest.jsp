@@ -1,9 +1,4 @@
-<%@page import="utils.BoardPageBoot"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page import="model1.mylibrary.book.BookDTO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="model1.mylibrary.book.BookDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -50,14 +45,14 @@
 						
 				<tbody class="text-center">
 					<c:choose>
-						<c:when test="${ empty boardLists }">
+						<c:when test="${ empty boardList }">
 							<tr>
 
 								<td colspan="7" align="center">등록된 게시물이 없습니다^^*</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${boardLists }" var="row" varStatus="loop">
+							<c:forEach items="${boardList }" var="row" varStatus="loop">
 								<tr align="center">
 									<td>	<input type="checkbox" name="bookChk" /></td>
 									<td>${map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index) }

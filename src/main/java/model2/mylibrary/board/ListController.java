@@ -59,7 +59,7 @@ public class ListController extends HttpServlet {
 		map.put("start", start);
 		map.put("end", end);
 
-		List<BoardDTO> boardLists = dao.selectListPage(map);
+		List<BoardDTO> boardList = dao.selectListPage(map);
 		dao.close();
 
 		Map<String, Object> pagingMap = new HashMap<String, Object>();
@@ -98,7 +98,7 @@ public class ListController extends HttpServlet {
 		map.put("pageSize", pageSize);
 		map.put("pageNum", pageNum);
 
-		req.setAttribute("boardLists", boardLists);
+		req.setAttribute("boardList", boardList);
 		req.setAttribute("map", map);
 		
 		req.getRequestDispatcher(forwardUrl.toString()).forward(req, resp);

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.boxA {
+	margin-top: 50px;
+	/* border: 1px solid black; */
+}
+
+.boxA:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.boxB {
+	border: 1px solid black;
+	float: left;
+	margin: 5px;
+	min-width: 600px;
+	max-width: 600px;
+	min-height: 500px;
+	max-height: 500px;
+	width: 50%;
+	overflow-x : hidden;
+	overflow-y : auto;
+}
+
+.boxC {
+	/* border: 1px solid red;*/
+	min-width: 600px;
+	max-width: 1200px;
+	min-height: 500px;
+}
+
+#thirdTable>tbody>tr>th {
+	text-align: right;
+}
+
+.w-100px {
+	width: 100px !important;
+}
+
+.w-200px {
+	width: 200px !important;
+}

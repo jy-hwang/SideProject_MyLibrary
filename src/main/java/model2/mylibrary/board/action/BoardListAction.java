@@ -98,7 +98,7 @@ public class BoardListAction  implements Action{
 		map.put("pageSize", pageSize);
 		map.put("pageNum", pageNum);
 
-		request.setAttribute("boardLists", articleList);
+		request.setAttribute("boardList", articleList);
 		request.setAttribute("map", map);
 		ActionForward forward = new ActionForward();	
 		
